@@ -39,4 +39,5 @@ def start(highlight = 1):
 
         time.sleep(0.1)
 
+
 start()
