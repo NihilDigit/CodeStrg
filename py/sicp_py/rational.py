@@ -23,3 +23,12 @@ def mul_rationals(x, y):
     return rational(numer(x) * numer(y), denom(x) * denom(y))
 
 # 抽象屏障
+
+def square_rational(x):
+    return mul_rationals(x, x)
+
+def square_rational_violating(x):
+    return rational(numer(x) * numer(x), denom(x) * denom(x))
+
+# 第二种写法就违反了抽象屏障，访问numer的行为实际上跨越了两层抽象
+# 保证抽象屏障可以增强代码的可维护性，我们可以在不损坏其他函数的情况下改变有理数的表示方式
