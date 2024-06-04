@@ -117,7 +117,7 @@ def is_leaf(tree):
 # 构造
 t = tree(3, [tree(1), tree(2, [tree(1), tree(1)])])
 
-# 树递归可用于构造树
+# 树递归可用于构造树，定义 fib_tree 是以第 n 个斐波那契数为根标签的树
 def fib_tree(n):
     if n == 0 or n == 1:
         return tree(n)
@@ -127,3 +127,13 @@ def fib_tree(n):
         return tree(fib_n, [left, right])
     
 print(fib_tree(5))
+
+#树递归用来处理树的例子，count_leaves 计算树的叶子数
+def count_leaves(tree):
+    if is_leaf(tree):
+        return 1
+    else:
+        branch_counts = [count_leaves(b) for b in branches(tree)]
+        return sum(branch_counts)
+    
+print(count_leaves(fib_tree(5)))
